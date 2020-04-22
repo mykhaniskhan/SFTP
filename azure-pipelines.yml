@@ -1,6 +1,18 @@
 # Starter pipeline
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'NewApp'
+    subscriptionId: '9b0bab7b-c52b-4d62-9448-e2c3da8434d0'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'sftprg'
+    location: 'East US'
+    templateLocation: 'Linked artifact'
+    csmFile: 'azuredeploy.json'
+    csmParametersFile: 'azuredeploy.parameters.json'
+    deploymentMode: 'Incremental'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
     deploymentScope: 'Subscription'
     azureResourceManagerConnection: 'NewApp'
     subscriptionId: '9b0bab7b-c52b-4d62-9448-e2c3da8434d0'
